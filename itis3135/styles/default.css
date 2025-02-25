@@ -8,8 +8,12 @@ h1, h2, h3 {
     font-family: Garamond;
 }
 
-img {
+figure img {
     width: 20vw;
     min-width: 200px;
+}
+
+figure {
+    text-align: center;
 }
 
