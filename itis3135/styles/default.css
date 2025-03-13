@@ -9,11 +9,6 @@ h1, h2, h3 {
     font-family: Garamond;
 }
 
-figure img {
-    width: 20vw;
-    min-width: 200px;
-}
-
 figure {
     text-align: center;
 }
@@ -24,4 +19,16 @@ header {
 
 a {
     text-decoration: none;
+}
+
+.bullets {
+    text-align: left;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-pic {
+    width: 20vw;
+    height: auto;
+    object-fit: contain;
 }
