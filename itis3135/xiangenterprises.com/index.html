@@ -6,24 +6,161 @@
         <title>Xiang Enterprises</title>
         <!-- https://coolors.co/ba2d0b-d5f2e3-73ba9b-003e1f-01110a -->
         <style>
-            * {
+            html {
                 --engineering-orange: #ba2d0b;
                 --honeydew: #d5f2e3;
                 --cambridge-blue: #73ba9b;
                 --british-racing-green: #003e1f;
                 --night: #01110a;
             }
+
+            html, body, ::before, ::after {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            header {
+                text-align: center;
+                background-color: var(--cambridge-blue);
+                padding-bottom: 2%;
+            }
+
+            main {
+                text-align: center;
+                background-color: var(--honeydew);
+                padding: 3% 100px;
+                color: var(--engineering-orange);
+            }
+
+            ul {
+                display: inline-block;
+                margin: 0 auto;
+                list-style-type: georgian;
+                font-family: Baskervville;
+                text-align: left;
+            }
+
+            .slogan {
+                font-style: italic;
+                font-family: Baskervville, serif;
+                font-size: 1.3rem;
+                color: var(--engineering-orange)
+            }
+
+            .hero-title {
+                font-family: Anton, sans-serif;
+                font-size: 4rem;
+                margin: 10px;
+                color: var(--engineering-orange);
+            }
+
+            .hero-subtitle {
+                font-size: 2rem;
+                font-family: Raleway, sans-serif;
+                color: var(--engineering-orange);
+            }
+
+            .title-logo-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1em;
+            }
+
+            footer {
+                background: var(--cambridge-blue);
+                text-align: center;
+                padding: 0.5em;
+            }
+
+            #describe {
+                font-family: Baskervville, serif;
+                font-size: 1.1em;
+                color: var(--night);
+            }
+
+            #what-we-do {
+                font-family: Baskervville, serif;
+                color: var(--night);
+                font-size: 1.1em;
+            }
+
+            .contact-info {
+                background-color: var(--british-racing-green);
+            }
+
+            .white {
+                color: var(--honeydew);
+            }
+
+            /*
+            img {
+                width: 100px;
+                height: auto;
+                object-fit: contain;
+            }
+            */
+
+            .details {
+                font-family: Baskervville, serif;
+            }
+
+            .bold {
+                font-size: 1.4em;
+            }
+
+            @media only screen and (max-width: 550px) {
+                .hero-title {
+                    font-size: 3rem;
+                }
+
+                .hero-subtitle {
+                    font-size: 1.5rem;
+                }
+
+                #slogan {
+                    font-size: 1.1rem;
+                }
+            }
         </style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton%7CBaskervville%7CRaleway&display=swap">
+        <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header>
-
+            <div class="title-logo-container">
+                <h1 class="hero-title">Xiang Enterprises</h1>
+                <img src="images/books_lowres.png" alt="Logo for Xiang Enterprises">
+            </div>
+            <p class="slogan">Designing Your Digital Future, One Pixel at a Time.</p>
         </header>
         <main>
-
+            <h2 class="hero-subtitle">Xiang Enterprises's Services</h2>
+            <p id="describe">We specialize in creating visually captivating, user-centric websites that drive results. With a focus on creativity, functionality, and performance, we build custom digital solutions tailored to your unique business needs.</p>
+            <ul id="about">
+                <li>Our designs are tailored with your users in mind, ensuring a seamless and intuitive browsing experience that enhances engagement and conversion.</li>
+                <li>We specialize in crafting bespoke, visually stunning websites that capture the essence of your brand and stand out from the competition.</li>
+                <li>We understand that speed matters. Our websites are optimized for fast load times, which helps improve user experience and SEO rankings.</li>
+                <li>We believe in clear, consistent communication throughout the design and development process, ensuring you're always in the loop and satisfied with progress.</li>
+                <li>Our commitment doesn’t end after launch. We offer ongoing support and maintenance to ensure your website continues to perform at its best.</li>
+            </ul>
+            <p id="what-we-do">We are dedicated to helping you build a strong, impactful online presence that aligns with your brand’s vision and goals. 
+                Whether you're looking to launch a new website, revamp your current site, or create a custom digital solution, our team of experts will work with you every step of the way. 
+                We focus on creating stunning, responsive designs that not only look great but also provide an exceptional user experience. Our goal is to help your business thrive by delivering a website that drives engagement, enhances your brand, and boosts conversions. 
+                Let’s partner together to take your digital presence to the next level.</p>
+            <section class="contact-info white">
+                <h2 class="hero-subtitle white">Contact Us</h2>
+                <div class="details">
+                    <p><strong class="bold">Email:</strong> contact@xiangenterprises.com</p>
+                    <p><strong class="bold">Phone: </strong> (408) 253-1435</p>
+                    <p><strong class="bold">Address: </strong> 123 Digital Way, Suite 400, Austin, TX 78701</p>
+                </div>
+            </section>
         </main>
         <footer>
-
+            <p>&copy; 2025 Xiang Enterprises</p>
+            <p class="slogan">Designing Your Digital Future, One Pixel at a Time.</p>
         </footer>
     </body>
 </html>
