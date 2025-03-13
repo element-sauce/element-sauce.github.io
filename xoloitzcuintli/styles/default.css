@@ -1,0 +1,106 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+#whimsical-name {
+    display: block;
+    margin: 3% auto 2% auto;
+    display: block;
+}
+
+#slogan {
+    display: block;
+    margin-block-end: 1rem;
+    font-style: italic;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+nav > ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 1.5%;
+    padding: 1%;
+    background-color: #834141;
+}
+
+nav a {
+    padding: 4px 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+header {
+    text-align: center;
+    background-color: #AF5B5B;
+    display: block;
+    padding: 1% 0;
+    color: #e8c547;
+}
+
+.hero {
+    background: url(../images/painting.jpg) center/cover no-repeat;
+    background-color: #F6F4F3;
+    width: 100vw;
+    height: 55vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title {
+    position: relative;
+    top: -15%;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #e8c547;
+    font-size: 3rem;
+    text-align: center;
+}
+
+footer {
+    background-color: #E6AA68;
+    text-align: center;
+    padding: 20px;
+}
+
+#blurb {
+    text-align: center;
+    background-color:#8c6464;
+    padding: 30px;
+}
+
+#blurb-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.text-housing {
+    background-color: #b98585;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+#featured {
+    background-color: #E6AA68;
+    text-align: center;
+    padding: 18px;
+}
+
+#img-housing {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
