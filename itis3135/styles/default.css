@@ -2,6 +2,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color:antiquewhite;
     color: #315659;
+    text-align: center;
 }
 
 h1, h2, h3 {
@@ -17,3 +18,10 @@ figure {
     text-align: center;
 }
 
+header {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
