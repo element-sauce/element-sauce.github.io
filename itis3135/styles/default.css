@@ -1,3 +1,13 @@
+html, body {
+    all: initial;
+}
+
+main {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color:antiquewhite;
@@ -31,4 +41,23 @@ a {
     width: 20vw;
     height: auto;
     object-fit: contain;
+}
+
+/* Rule Overrides For Laptops / Small Screens */
+@media screen and ( min-width: 981px ) and ( max-width: 1400px ) {
+    body {
+        font-size: 90%;
+    }
+}
+/* Rule Overrides For Tablet Devices */
+@media screen and ( min-width: 601px ) and ( max-width: 980px )  {
+    body {
+        font-size: 80%;
+    }
+}
+/* Rule Overrides For Mobile Devices */
+@media screen and ( min-width: 370px ) and ( max-width: 600px ) {
+    body {
+        font-size: 70%;
+    }
 }
