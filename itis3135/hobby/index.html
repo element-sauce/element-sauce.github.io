@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+    <!--https://coolors.co/f7f7f2-e4e6c3-899878-222725-121113-->
+    <style>
+        html {
+            --baby-powder: #f7f7f2;
+            --beige: #e4e6c3;
+            --moss-green: #899878;
+            --eerie-black: #222725;
+            --charcoal: #424B54;
+            --african-violet: #AA78A6;
+            --light: rgb(236, 236, 211);
+            --dark: rgb(125, 148, 95);
+        }
+        header {
+            text-align: center;
+            font-family: Faustina, serif;
+        }
+        body {
+            font-family: Josefin Sans, sans-serif;
+            background-color: var(--beige);
+        }
+        main {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+        nav a {
+            transition: background 0.3s ease, padding 0.3s ease-in-out;
+            border-radius: 6px;
+            padding: 1em 3em;
+        }
+        nav a:hover {
+            background-color: orange;
+            padding-left: 5em;
+            padding-right: 5em;
+        }
+        footer {
+            text-align: center;
+            background-color: var(--baby-powder);
+            padding: 2em;
+        }
+        nav > ul {
+            display: flex;
+            list-style-type: none;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0 45px 0 45px;
+        }
+        .big-title {
+            font-weight: 800;
+            font-size: 3.2rem;
+        }
+        .title {
+            text-align: center;
+            font-size: 1.6em;
+            background-color: var(--african-violet);
+            padding: 1em;
+            border-radius: 10px;
+            color: var(--baby-powder);
+        }
+        li > a {
+            font-size: 1.1em;
+        }
+        ol > li {
+            padding: 0.5em;
+        }
+        input[type=checkbox] {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        figcaption {
+            box-sizing: border-box;
+            padding: 1.2em 0 0 0;
+        }
+        .description {
+            font-size: 1.5rem;
+            background-color: var(--moss-green);
+            box-sizing: border-box;
+            padding: 1em;
+            border-radius: 10px;
+        }
+        .source-explain {
+            text-align: center;
+        }
+
+        #home, .sections:target {
+            display: block;
+        }
+        .sections, .sections:target ~ #home {
+            display: none;
+        }
+        .chessboard-container {
+            padding: 30px;
+            background: hsl(30, 90%, 95%);
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            max-width: fit-content;
+            margin: 0 auto;
+            box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        div.sq {
+            width: 75px;
+            aspect-ratio: 1;
+            color: var(--eerie-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2em;
+        }
+        .row {
+            display: flex;
+        }
+        .row:nth-child(even) .sq:nth-child(even), .row:nth-child(odd) .sq:nth-child(odd) {
+            background: var(--light);
+        }
+        .row:nth-child(odd) .sq:nth-child(even), .row:nth-child(even) .sq:nth-child(odd) {
+            background: var(--dark);
+        }
+    </style>
+    <!-- Josefin Sans is sans-serif, Faustina is serif-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico">
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1 class="big-title">Chess</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#home">Home</a>
+                    <!-- possible checkbox hack
+                    <label for="toggle-1">Home</label>
+                    <input type="checkbox" id="toggle-1">
+                    -->
+                </li>
+                <li><img src="images/favicon-32x32.png" alt="chess pawn divider" class="nav-divider"></li>
+                <li><a href="#who">Who Am I</a></li>
+                <li><img src="images/favicon-32x32.png" alt="chess pawn divider" class="nav-divider"></li>
+                <li><a href="#when">When</a></li>
+                <li><img src="images/favicon-32x32.png" alt="chess pawn divider" class="nav-divider"></li>
+                <li><a href="#where">Where</a></li>
+                <li><img src="images/favicon-32x32.png" alt="chess pawn divider" class="nav-divider"></li>
+                <li><a href="#how">How</a></li>
+                <li><img src="images/favicon-32x32.png" alt="chess pawn divider" class="nav-divider"></li>
+                <li><a href="#why">Why</a></li>
+                <li><img src="images/favicon-32x32.png" alt="chess pawn divider" class="nav-divider"></li>
+                <li><a href="#ai-proompting">AI Prompts</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="sections" id="who">
+            <h2 class="title">Who Am I</h2>
+            <figure>
+                <img src="images/chess-ai-portrait-scaled.jpg" alt="A man with a checkered mask sitting across from a chessboard.">
+                <figcaption>
+                    A man with a checkered mask sitting across from a chessboard.
+                </figcaption>
+            </figure>
+            <p class="source-explain">
+                <em>Prompted Grok with "Draw an image depicting a man with a black and white checkered mask covering their entire face playing chess in watercolor style."</em>
+            </p>
+            <div class="description">
+                <p>
+                    I am a sophomore studying Computer Science at the University of North Carolina at Charlotte. I learned the rules of chess at a young age and played
+                    chess for a few years at my primary school chess club, and then at the local community chess club. After I started learning about programming, I 
+                    gradually stopped playing altogether. During the chess boom in popular culture that occurred largely during the initial pandemic period at the start of the
+                    second decade in the twenty-first century, it forced itself onto my radar again. Recently, I've been keeping up periodically with chess news, and
+                    will play a game or two when I'm not studying.
+                </p>
+    
+                <p>
+                    Recently, I found myself liking the idea of freestyle chess more than standard chess. Standard chess has the same predetermined starting arrangement of pieces, 
+                    but freestyle chess starts at a position randomly chosen from nine hundred and sixty positions. This addresses the criticism by several top contemporary
+                    chess players and their predecessors (most notably Robert "Bobby" Fischer) about the prevalance of the preparation of sequences of moves
+                    called lines prior to the match, which may stifle creativity. At the expert levels, it is not unheard of for top players known as "grandmasters" to have the first twenty or more moves of a game
+                    made, based on memorized lines. With many more starting positions, it is infeasible for players to have prepared lines of such depth, in the variant of chess
+                    known as freestyle.
+                </p>
+            </div>
+        </section>
+        <section class="sections" id="when">
+            <h2 class="title">When to play chess?</h2>
+            <figure>
+                <img src="images/two_men_outside_scaled.jpg" alt="Two men playing chess during good weather">
+                <figcaption>
+                    Two men playing chess during good weather.
+                </figcaption>
+            </figure>
+            <p class="source-explain">
+                <em>Two Men Playing Chess - autochrome by Alfred Stieglitz, CC0</em>
+            </p>
+            <div class="description">
+                <p>
+                    Chess is a versatile game that can easily be played outdoors during pleasant weather, offering an enjoyable experience in natural surroundings. During the day, on a sunny day or in mild weather, players can set up a chessboard in parks, gardens, or outdoor cafés, enjoying the fresh air and the relaxing ambiance. The game can be a perfect social activity, allowing friends and family to gather outdoors, while also providing a stimulating challenge. Playing chess outside can be especially rewarding, as it brings a combination of strategic thinking and the calming effects of nature.
+                </p>
+                <p>
+                    On the other hand, chess can also be played indoors, making it a timeless activity that can be enjoyed regardless of the weather or time of day. Whether it's raining, snowing, or dark outside, the game provides an opportunity for mental engagement in a comfortable indoor setting. Indoors, players can focus without distraction, and the stability of the environment ensures that the game can be played at any time, whether during the day or late into the night. Chess sets are available in various materials, including traditional wood and modern plastic.
+                </p>
+            </div>
+        </section>
+        <section class="sections" id="where">
+            <h2 class="title">Where to play chess?</h2>
+            <figure>
+                <img src="images/charlotte_scaled.jpg" alt="Human sized chess board. This is the Port Charlotte Town Center Mall in June 2023.">
+                <figcaption>
+                    Human sized chess board. This is the Port Charlotte Town Center Mall in June 2023.
+                </figcaption>
+            </figure>
+            <p class="source-explain">
+                <em>Image: Interior of the Port Charlotte Town Center Mall by PCHS-NJROTC, CC0</em>
+            </p>
+            <div class="description">
+                <p>
+                    Chess can be played at your local chess club, such as the Charlotte Chess Center, which provides a welcoming environment for both beginners and experienced players. These centers often host regular in-person events, including casual games, lessons, and competitive tournaments. Whether you're looking to improve your skills, meet fellow chess enthusiasts, or challenge yourself in a friendly environment, local clubs offer a space for socializing and sharpening your strategy. Many clubs also provide coaching, which can be especially helpful if you are looking to take your game to the next level.
+                </p>
+
+                <p>
+                    In addition to playing locally, chess can be enjoyed online through large platforms like Chess.com, which offer a vast array of features for players of all skill levels. Chess.com regularly hosts online tournaments, including notable events like "Titled Tuesday," where many of the world’s top players, experts, and amateurs compete for prize money. These events attract grandmasters and other elite players from around the globe, allowing enthusiasts to watch high-level competition and even participate themselves. Whether you're looking for casual matches, ranked games, or to challenge top players, online platforms provide endless opportunities to engage with the global chess community at any time.
+                </p>
+            </div>
+        </section>
+        <section class="sections" id="how">
+            <h2 class="title">How to play chess?</h2>
+            <div class="chessboard-container">
+                <!-- Emmet: (.row>.sq*8)*8 -->
+                <div class="row">
+                    <div class="sq">&#x265c;</div>
+                    <div class="sq">&#x265e;</div>
+                    <div class="sq">&#x265d;</div>
+                    <div class="sq">&#x265b;</div>
+                    <div class="sq">&#x265a;</div>
+                    <div class="sq">&#x265d;</div>
+                    <div class="sq">&#x265e;</div>
+                    <div class="sq">&#x265c;</div>
+                </div>
+                <div class="row">
+                    <div class="sq">&#x265f;</div>
+                    <div class="sq">&#x265f;</div>
+                    <div class="sq">&#x265f;</div>
+                    <div class="sq">&#x265f;</div>
+                    <div class="sq">&#x265f;</div>
+                    <div class="sq">&#x265f;</div>
+                    <div class="sq">&#x265f;</div>
+                    <div class="sq">&#x265f;</div>
+                </div>
+                <div class="row">
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                </div>
+                <div class="row">
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                </div>
+                <div class="row">
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                </div>
+                <div class="row">
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                    <div class="sq"></div>
+                </div>
+                <div class="row">
+                    <div class="sq">&#x2659;</div>
+                    <div class="sq">&#x2659;</div>
+                    <div class="sq">&#x2659;</div>
+                    <div class="sq">&#x2659;</div>
+                    <div class="sq">&#x2659;</div>
+                    <div class="sq">&#x2659;</div>
+                    <div class="sq">&#x2659;</div>
+                    <div class="sq">&#x2659;</div>
+                </div>
+                <div class="row">
+                    <div class="sq">&#x2656;</div>
+                    <div class="sq">&#x2658;</div>
+                    <div class="sq">&#x2657;</div>
+                    <div class="sq">&#x2655;</div>
+                    <div class="sq">&#x2654;</div>
+                    <div class="sq">&#x2657;</div>
+                    <div class="sq">&#x2658;</div>
+                    <div class="sq">&#x2656;</div>
+                </div>
+            </div>
+            <p class="source-explain">
+                <em>Standard chess diagram</em>
+            </p>
+            <div class="description">
+                <p>
+                    Learning to play chess begins with understanding its basic rules, which are readily accessible through a variety of resources. Introductory books, Wikipedia articles, or online tutorials are excellent places to start, as they provide a comprehensive breakdown of how each piece moves, the objective of the game, and special rules like castling, en passant, and pawn promotion. Many of these resources also include diagrams and examples that make grasping the fundamentals relatively easy. For beginners, this initial learning phase is quick and straightforward, and it provides the foundation necessary to begin playing the game.
+                </p>
+                <p>
+                    However, the true learning in chess comes from consistent practice and experience, and it’s in playing actual games where improvement happens. Simply memorizing the rules is not enough to become proficient; one must engage with the game regularly to internalize strategy, tactics, and pattern recognition. As you play, it's crucial to notate your moves, either manually or using digital tools, so that you can review and reflect on your games afterward. By analyzing your games, especially the ones you lose, you can identify mistakes and missed opportunities, learning valuable lessons from each game. Chess is a skill that deepens with repetition, reflection, and the continuous application of knowledge gained through play, making practice the key to truly mastering the game.
+                </p>
+            </div>
+        </section>
+        <section class="sections" id="why">
+            <h2 class="title">Why should you play chess?</h2>
+            <figure>
+                <img src="images/pensive_scaled.jpg" alt="A man thinking pensively during a chess game.">
+                <figcaption>
+                    A man thinking pensively during a chess game.
+                </figcaption>
+            </figure>
+            <p class="source-explain">
+                <em>Prompted Grok with "Draw an image depicting a man thinking pensively during a chess game in watercolor style."</em>
+            </p>
+            <div class="description">
+                <p>
+                    Playing chess offers significant intellectual benefits, providing a powerful form of mental exercise that enhances cognitive abilities. The game challenges players to think critically, plan ahead, and develop problem-solving skills, all of which help strengthen memory and concentration. Chess requires players to evaluate multiple possible moves and anticipate their opponent’s strategies, promoting strategic thinking and fostering the ability to think several steps ahead. Additionally, regular chess play can improve decision-making skills, as players must weigh the consequences of their choices and adapt to an ever-changing board. These intellectual benefits extend beyond the chessboard, as the cognitive skills honed through playing chess can enhance other aspects of life, from academic performance to professional tasks requiring analysis and foresight.
+                </p>
+                <p>
+                    Beyond its intellectual advantages, chess also offers a profound lesson in self-accountability. In chess, every game you lose is entirely your fault, as the game is governed by clear, logical rules that leave no room for chance. With perfect play from both sides, a game of chess will always end in a draw or tie, meaning that any defeat is a direct result of your own decisions and mistakes. This harsh reality forces players to take full responsibility for their actions on the board. There is no one to blame but yourself for missed opportunities, poor strategies, or tactical errors. This teaches the invaluable lesson of self-reflection, as each loss becomes an opportunity to critically examine your choices and learn from them. In a world full of external factors, chess offers a rare space where outcomes are purely shaped by your own skill, decisions, and improvement, emphasizing total personal accountability in a way few other activities can.
+                </p>
+            </div>
+        </section>
+        <section class="sections" id="ai-proompting">
+            <h2 class="title">AI Prompts</h2>
+            <div class="description">
+                <ol>
+                    <li>For the "What" page, I prompted ChatGPT with "Give a succinct introduction paragraph explaining what chess is, followed by a paragraph of brief synopsis of its history."</li>
+                    <li>For the "When" page, I prompted ChatGPT with "Give an explanation divided into two paragraphs that chess can be played outside during good weather and during the day, and also can be played indoors regardless of the weather outside or time of day.", making minor edits.</li>
+                    <li>For the "Where" page, I prompted ChatGPT with "Explain that chess can be played at your local chess club such the local Charlotte Chess Center. In the second paragraph, explain how you can play chess online on large platforms such chess.com which regular hold prize money tournaments such as "Titled Tuesday" where many of the world's top players and experts, as well as amateurs compete."</li>
+                    <li>For the "How" page, I prompted ChatGPT with "Give an explanation on how someone can learn to play chess. In the first paragraph, include explanation how the rules can be learned from a introductory book, Wikipedia article, or about anywhere on the internet. Emphasize that learning the rules is the easy part. Explain in the second paragraph that the true learning comes from practice, and practice is actually playing games of chess, and notating the moves so that one can review from them."</li>
+                    <li>For the "Why" page, I used two prompts with ChatGPT. The first being "Give an explanation on why someone should play chess divided into two paragraphs. First highlight concrete benefits to the effect of providing intellectual exercise, and then delve into  exploration of its philosophical underpinnings." 
+                        and the second being "Revise the second paragraph to emphasize that chess teaches you total and utter self-accountability. Explain that every game you lose is 100% your fault because with perfect play, a game of chess always ends in a draw or tie."
+                    </li>
+                </ol>
+            </div>
+        </section>
+        <section class="sections" id="home">
+            <h2 class="title">What is chess?</h2>
+            <figure>
+                <img src="images/Chess_game_Staunton_No._6_scaled.jpg" alt="A wooden chessboard set up correctly to the standard starting position.">
+                <figcaption>
+                    A wooden chessboard set up correctly to the standard starting position.
+                </figcaption>
+            </figure>
+            <p class="source-explain">
+                <em>Image: Chess game Staunton No. 6 by Wilfredor, CC0</em>
+            </p>
+            <div class="description">
+                <p>
+                    Chess is a timeless and intellectually stimulating board game played between two opponents on a square 8x8 grid. 
+                    Each player begins with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns, all of which move in distinct ways. 
+                    The primary objective of the game is to checkmate the opponent's king, meaning to place the king in a position where it is under attack and cannot escape capture. 
+                    Chess combines both strategy and tactics, requiring players to think ahead, plan several moves in advance, and adapt to an evolving game. 
+                    Its depth and complexity have earned it a reputation as one of the greatest games of skill in the world, with millions of enthusiasts globally playing it casually and competitively, both online and in person.
+                </p>
+            </div>
+            <figure>
+                <img src="images/king_queen_playing_chess_scaled.jpg" alt="King and queen playing chess from circa 15th century.">
+                <figcaption>
+                    King and queen playing chess from circa 15th century. An illustration from 'Das Schachzabelbuch'; a paraphrase in German verse by von Ammenhusen from the Latin of Cessolis.
+                </figcaption>
+            </figure>
+            <p class="source-explain">
+                <em>Image: Das Schachzabelbuch held and digitised by the British Library, CC0</em>
+            </p>
+            <div class="description">
+                <p>
+                    The history of chess spans over a thousand years, with its origins tracing back to ancient India around the 6th century AD. 
+                    The precursor to modern chess, known as chaturanga, was a strategy game that closely resembled chess, featuring similar pieces and moves, and was played on an 8x8 grid. 
+                    From India, the game spread to Persia, where it became known as shatranj. The game was further refined and popularized in the Islamic world during the 7th and 8th centuries. 
+                    By the 10th century, chess reached Europe through Spain, where it became especially popular in the courts of kings and nobles. During the Middle Ages, the rules of the game began to change, and by the 15th century, major rule modifications, such as the powerful moves of the queen and bishop, shaped the game into the version we recognize today. 
+                    The 19th century saw the establishment of official competitive play, leading to the creation of the first World Chess Championship in 1886. Chess continues to evolve, with modern technology and the rise of online platforms bringing the game to a new generation of players worldwide.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Designed by <a href="../xiangenterprises.com/index.html">Xiang Enterprises</a> &copy;2025
+    </footer>
+</body>
+</html>
