@@ -43,6 +43,41 @@ a {
     object-fit: contain;
 }
 
+.tabular-data {
+    text-align: left;
+    list-style-position: inside;
+    margin-left: 20%;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 2px solid #000000;
+    padding: 0.5em;
+}
+
+figcaption {
+    margin-bottom: 1em;
+}
+
+.complex-table thead:first-child {
+    background-color: #222;
+    color: white;
+}
+
+.complex-table tr:nth-child(odd) td, .complex-table tbody tr:nth-child(odd) th {
+    background-color: #777;
+    color: #a9eaef;
+}
+
+.complex-table tr:nth-child(even) td, .complex-table tbody tr:nth-child(even) th {
+    background-color: #999;
+    color: #a9eaef;
+}
+
 /* Rule Overrides For Laptops / Small Screens */
 @media screen and ( min-width: 981px ) and ( max-width: 1400px ) {
     body {
