@@ -3,7 +3,7 @@ html, body {
 }
 
 main {
-    max-width: 1200px;
+    max-width: 950px;
     width: 90%;
     margin: 0 auto;
 }
@@ -13,6 +13,7 @@ body {
     background-color:antiquewhite;
     color: #315659;
     text-align: center;
+    font-size: 110%;
 }
 
 h1, h2, h3 {
@@ -76,6 +77,31 @@ figcaption {
 .complex-table tr:nth-child(even) td, .complex-table tbody tr:nth-child(even) th {
     background-color: #999;
     color: #a9eaef;
+}
+
+a {
+    color: #315659;
+}
+
+a:hover {
+    color:#e15707;
+    text-decoration: underline;
+}
+
+ul {
+    text-align: left;
+}
+
+p {
+    text-align: left;
+}
+
+footer {
+    text-align: center;
+}
+
+footer > p {
+    text-align: center;
 }
 
 /* Rule Overrides For Laptops / Small Screens */
